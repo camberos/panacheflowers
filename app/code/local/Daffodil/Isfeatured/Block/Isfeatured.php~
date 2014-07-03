@@ -1,0 +1,57 @@
+<?php
+class Daffodil_Isfeatured_Block_Festock extends Mage_Core_Block_Template 
+{
+       
+	
+               
+	function isVisible()
+	{  
+            
+            
+            
+            $block = $this->getLayout()
+            ->getBlock('product.info');
+
+            if ($block) {
+                
+              
+                
+                // Block exists - you're viewing product page
+            }
+
+            
+            
+	    //$config = Mage::getConfig();
+		$config = Mage::getStoreConfig('divslider_options');
+	   // $myvalue=Mage::getStoreConfig('divslider_options');
+	   // $socialcodes=Mage::getStoreConfig('divslider_options');
+		//$true=$myvalue['all_settings']['enabledisable'];
+		//$enable=1;
+		/*if($enable == "true")
+		{
+			$enable = 1;
+		}
+		else
+		{
+			$true = 0;
+		}
+        if($myvalue['all_settings']['enabledisable']==$enable){
+		
+		 //$socialcodes['all_settings']['fbappid'];
+        
+		
+			//return false;
+		} */
+		$enable =   $config['all_settings']['enabledisable'];
+		echo $enable;
+		
+	}
+	function isEnable()
+	{
+		$config = Mage::getStoreConfig('divslider_options');
+		$enable =   $config['all_settings']['enabledisable'];
+		return $enable;
+	}
+}
+
+?>

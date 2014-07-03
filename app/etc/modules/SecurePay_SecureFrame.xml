@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SecurePay_SecureFrame>
+            <active>true</active>
+            <codePool>local</codePool>
+        </SecurePay_SecureFrame>
+    </modules>
+</config>

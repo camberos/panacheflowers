@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * MageWorx
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MageWorx EULA that is bundled with
+ * this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.mageworx.com/LICENSE-1.0.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extension
+ * to newer versions in the future. If you wish to customize the extension
+ * for your needs please refer to http://www.mageworx.com/ for more information
+ *
+ * @category   MageWorx
+ * @package    MageWorx_MultiFees
+ * @copyright  Copyright (c) 2013 MageWorx (http://www.mageworx.com/)
+ * @license    http://www.mageworx.com/LICENSE-1.0.html
+ */
+
+/**
+ * Multi Fees extension
+ *
+ * @category   MageWorx
+ * @package    MageWorx_MultiFees
+ * @author     MageWorx Dev Team
+ */
+-->
+<config>
+    <sections>
+        <mageworx_sales translate="label" module="mageworx">
+            <label>Sales</label>
+            <tab>mageworx</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <multifees translate="label" module="multifees">
+                    <label>Multi Fees</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>multifees/system_config_backend_checkdb</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>                        
+                        
+                        <images_thumbnails_size translate="label">
+                            <label>Size of Thumbnails</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-digits validate-not-negative-number</validate>
+                        </images_thumbnails_size>                                                
+                        
+                        <include_fee_in_shipping_price translate="label">
+                            <label>Include Fee in Shipping Price</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </include_fee_in_shipping_price>
+                        
+                        <tax_calculation_includes_tax translate="label">
+                            <label>Calculation Settings</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>tax/system_config_source_priceType</source_model>
+                            <comment>Whether multi fees prices include tax.</comment>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </tax_calculation_includes_tax>
+                        <display_tax_in_block translate="label">
+                            <label>Display Prices in Additional Fees Block</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>tax/system_config_source_tax_display_type</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </display_tax_in_block>
+                        <display_tax_in_cart translate="label">
+                            <label>Display Additional Fees Amount in Cart Total</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>tax/system_config_source_tax_display_type</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </display_tax_in_cart>                        
+                        <display_tax_in_sales translate="label">
+                            <label>Display Additional Fees Amount in Orders, Invoices, Credit Memos</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>tax/system_config_source_tax_display_type</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </display_tax_in_sales>
+                        
+                        <enable_cart translate="label">
+                            <label>Enable Cart Fees</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_cart>
+                        
+                        <position_in_cart translate="label">
+                            <label>Position of Additional Fees Block in Cart</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>multifees/system_config_source_position</source_model>
+                            <comment><![CDATA[Custom Position - add the line<br/>echo $this->getChildHtml('fee');<br/>in /app/design/frontend/[your_package]/[your_theme]/template/checkout/cart.phtml]]></comment>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </position_in_cart>
+                        <static_block_for_cart_page translate="label">
+                            <label>Static Block for Cart Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>multifees/system_config_source_cms_blocks</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </static_block_for_cart_page>                                               
+                        
+<!--                        <autoadd_total translate="label">
+                            <label>Automatically Add Required Fees To Order Total</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </autoadd_total>-->
+                        
+                        <enable_payment translate="label">
+                            <label>Enable Payment Fees</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_payment>
+                        
+                        <enable_shipping translate="label">
+                            <label>Enable Shipping Fees</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_shipping>
+                    </fields>
+                </multifees>
+            </groups>
+        </mageworx_sales>
+        <sales>
+           <groups>
+               <totals_sort>
+                   <fields>
+                       <multifees module="multifees" translate="label">
+                           <label>Multi Fees</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>20</sort_order>
+                           <show_in_default>1</show_in_default>
+                           <show_in_website>1</show_in_website>
+                           <show_in_store>0</show_in_store>
+                       </multifees>
+                       <tax_multifees module="multifees" translate="label">
+                           <label>Multi Fees (Incl. Tax)</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>21</sort_order>
+                           <show_in_default>1</show_in_default>
+                           <show_in_website>1</show_in_website>
+                           <show_in_store>0</show_in_store>
+                       </tax_multifees> 
+                   </fields>
+               </totals_sort>
+           </groups>
+       </sales>
+    </sections>
+</config>
